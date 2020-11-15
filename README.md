@@ -1,9 +1,11 @@
-App look and feel based on AppDesignKit
-<a href='https://github.com/ccascio/Shopware'><img src="https://relatedcode.com/github/header18.png" width="880"></a>
-
 ## OVERVIEW
 
 todo
+
+## Design
+
+App look and feel based on AppDesignKit
+<a href='https://github.com/ccascio/Shopware'><img src="https://relatedcode.com/github/header18.png" width="880"></a>
 
 ## FEATURES
 
