@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController" customModule="app" customModuleProvider="target">
+            <connections>
+                <outlet property="toggle" destination="B0T-Tl-MZv" id="4IP-Nk-H40"/>
+                <outlet property="view" destination="Yjt-R4-6lW" id="CfI-Qe-fUQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Yjt-R4-6lW">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LdK-oJ-YYT">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="AV5-MM-V1j"/>
+                        <constraint firstAttribute="height" constant="100" id="Qoz-iU-hn3"/>
+                    </constraints>
+                    <state key="normal" image="chevron.backward" catalog="system">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                    <connections>
+                        <action selector="close:" destination="-1" eventType="touchUpInside" id="cZp-Pk-ERE"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZh-vT-l22">
+                    <rect key="frame" x="314" y="762" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="5S2-dY-WC6"/>
+                        <constraint firstAttribute="height" constant="100" id="e4r-iT-hUf"/>
+                    </constraints>
+                    <state key="normal" image="arrow.triangle.2.circlepath.camera" catalog="system">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="switchCamera:" destination="-1" eventType="touchUpInside" id="I7Y-q1-eE9"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0T-Tl-MZv">
+                    <rect key="frame" x="0.0" y="762" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="BMM-Dp-LKc"/>
+                        <constraint firstAttribute="width" constant="100" id="XT2-S0-90n"/>
+                    </constraints>
+                    <state key="normal" image="flashlight.on.fill" catalog="system">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="toggle:" destination="-1" eventType="touchUpInside" id="O41-7U-3WJ"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="oMX-oZ-htK"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="LdK-oJ-YYT" firstAttribute="top" secondItem="Yjt-R4-6lW" secondAttribute="top" id="B0F-JJ-tyE"/>
+                <constraint firstItem="B0T-Tl-MZv" firstAttribute="baseline" secondItem="uZh-vT-l22" secondAttribute="baseline" id="BS7-Ir-ICi"/>
+                <constraint firstItem="B0T-Tl-MZv" firstAttribute="leading" secondItem="Yjt-R4-6lW" secondAttribute="leading" id="dkN-iV-dd4"/>
+                <constraint firstItem="LdK-oJ-YYT" firstAttribute="leading" secondItem="Yjt-R4-6lW" secondAttribute="leading" id="eFY-FC-e7V"/>
+                <constraint firstAttribute="trailing" secondItem="uZh-vT-l22" secondAttribute="trailing" id="fLc-o4-93F"/>
+                <constraint firstItem="B0T-Tl-MZv" firstAttribute="bottom" secondItem="oMX-oZ-htK" secondAttribute="bottom" id="ley-ik-1sy"/>
+            </constraints>
+            <point key="canvasLocation" x="-638" y="181"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.triangle.2.circlepath.camera" catalog="system" width="128" height="94"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <image name="flashlight.on.fill" catalog="system" width="76" height="128"/>
+    </resources>
+</document>
