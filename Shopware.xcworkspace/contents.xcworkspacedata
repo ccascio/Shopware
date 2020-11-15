@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/cascio_calogero/Documents/Xcode/AppDesignKit-master/Social/Shopware.xcodeproj">
+      location = "group:Shopware.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
