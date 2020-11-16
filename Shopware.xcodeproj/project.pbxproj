@@ -69,6 +69,7 @@
 		BB8692EF25619FCD0014F876 /* AddCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8692E925619FCD0014F876 /* AddCommentView.swift */; };
 		BB8692F025619FCD0014F876 /* AddComment1Cell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8692EA25619FCD0014F876 /* AddComment1Cell1.swift */; };
 		BB8692F125619FCD0014F876 /* AddComment1Cell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8692EB25619FCD0014F876 /* AddComment1Cell2.swift */; };
+		BB8692FD256330F30014F876 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BB8692FC256330F30014F876 /* README.md */; };
 		BB8E6CEE2517909F00B9336C /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BB8E6CED2517909F00B9336C /* IQKeyboardManagerSwift */; };
 		BB8E6CF2251790FE00B9336C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = BB8E6CF1251790FE00B9336C /* Kingfisher */; };
 		BBA043822533661500560213 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA043812533661500560213 /* Profile.swift */; };
@@ -180,6 +181,7 @@
 		BB8692E925619FCD0014F876 /* AddCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentView.swift; sourceTree = "<group>"; };
 		BB8692EA25619FCD0014F876 /* AddComment1Cell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddComment1Cell1.swift; sourceTree = "<group>"; };
 		BB8692EB25619FCD0014F876 /* AddComment1Cell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddComment1Cell2.swift; sourceTree = "<group>"; };
+		BB8692FC256330F30014F876 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BBA043812533661500560213 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		BBA364DC25266D670076B24F /* Description.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Description.swift; sourceTree = "<group>"; };
 		BBA364DD25266D670076B24F /* FR.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FR.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 		29D29EE81D9A59E4006CA074 = {
 			isa = PBXGroup;
 			children = (
+				BB8692FC256330F30014F876 /* README.md */,
 				29601FE21F2CF5F600544468 /* Classes */,
 				29D29EF31D9A59E4006CA074 /* app */,
 				29D29EF21D9A59E4006CA074 /* Products */,
@@ -630,6 +633,7 @@
 				BBF701AB2533A338006D16C9 /* EditAttributeView.xib in Resources */,
 				BB8692EC25619FCD0014F876 /* AddCommentView.xib in Resources */,
 				05EF29CA2431B0FF003E6221 /* Feed5Cell1.xib in Resources */,
+				BB8692FD256330F30014F876 /* README.md in Resources */,
 				05ACA3D72439ECE6005397F7 /* EditProfile1View.xib in Resources */,
 				058C66CE245AFD350055F3AB /* login3_twitter@3x.png in Resources */,
 				05703085243783F7006B7B77 /* Post2View.xib in Resources */,
