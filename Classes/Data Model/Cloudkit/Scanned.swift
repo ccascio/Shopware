@@ -61,7 +61,7 @@ class Scanned {
     var stores : [Stores]?
     var reviews:[String] = []
 
-    init(barcode: String, type: String, country: String, new: Bool?, asin: String) {
+    init(barcode: String, type: String, country: String, new: Bool?, asin: String?) {
         self.barcode = barcode
         self.type = type
         self.productName = ""
@@ -79,7 +79,7 @@ class Scanned {
         self.new = new ?? true
         self.mpn = ""
         self.model = ""
-        self.asin = ""
+        self.asin = asin ?? ""
         self.title = ""
         self.manufacturer = ""
         self.brand = ""

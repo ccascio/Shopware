@@ -2,8 +2,8 @@
 //  SwiftRadio-Settings.swift
 //  Swift Radio
 //
-//  Created by Matthew Fecher on 7/2/15.
-//  Copyright (c) 2015 MatthewFecher.com. All rights reserved.
+//  Created by Matthew Fecher on 7/2/18.
+//  Copyright (c) 2018 MatthewFecher.com. All rights reserved.
 //
 
 import Foundation
@@ -33,17 +33,17 @@ let pagination = 30
 // Google limit
 let numberOfResults: String = "20"
 
-let adMobId  = "ca-app-pub-4156476570195218~4887741000"
-let adUnitIDtest = "ca-app-pub-3940256099942544/3986624511"
-let adUnitID = "ca-app-pub-4156476570195218/7130760960"
-let adUnitIDNP = "ca-app-pub-4156476570195218/5833097912"
-let rewardedID = "ca-app-pub-4156476570195218/4967293712"
+let adMobId  = "ca-app-pub-4186476870198218~4887741000"
+let adUnitIDtest = "ca-app-pub-3940286099942844/3986624811"
+let adUnitID = "ca-app-pub-4186476870198218/7130760960"
+let adUnitIDNP = "ca-app-pub-4186476870198218/8833097912"
+let rewardedID = "ca-app-pub-4186476870198218/4967293712"
 
 //Batzoo
-var batzooAPIKey = "226KFQVzh53rEBCY0AgPcpBsPGnbK5odYOXX"
+var batzooAPIKey = "226KFQVzh83rEBCY0AgPcpBsPGnbK8odYOXX"
 
 //Barcode Lookup
-var bLookup = "nd7bcz0ehlfh5nejdrmdg6e68018b2"
+var bLookup = "nd7bcz0ehlfh8nejdrmdg6e68018b2"
 // scanned list row height
 var rowHeight = 140.0
 
@@ -52,4 +52,4 @@ var concurentDownloads = 4
 var cellOk = true
 
 //Keepa
-var keepaAPIKey = "7todg8qgk15087n740h3nm6bqekm4gqrrrsadt30bfg36atiudakvseo1b5j7hnd"
+var keepaAPIKey = "7todg8qgk18087n740h3nm6bqekm4gqrrrsadt30bfg36atiudakvseo1b8j7hnd"

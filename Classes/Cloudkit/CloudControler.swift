@@ -214,8 +214,7 @@ class CloudController {
                         for record in results! {
                             switch tableName {
                             case "scanned":
-
-                                let scanned = Scanned(barcode: record.object(forKey: "barcode") as! String, type: record.object(forKey: "type") as! String, country: (record.object(forKey: "country") as? String)!, new: false, asin: record.object(forKey: "asin") as! String)
+                                let scanned = Scanned(barcode: record.object(forKey: "barcode") as! String, type: record.object(forKey: "type") as! String, country: (record.object(forKey: "country") as? String)!, new: false, asin: record.object(forKey: "asin") as? String )
 
                                 StoreStruct.scanned.append(scanned)
                             case "category":
@@ -270,12 +269,14 @@ class CloudController {
                 } else {
                     self.privateDB!.save(record!, completionHandler: { (r, o) -> Void in
                         print("Saved!")
-                        print(r?.recordID as Any)
-                        var c = StoreStruct.categories.filter({$0.name == r?.object(forKey: "name") as! String})[0]
-                        c.record = r
-                        StoreStruct.categories.removeAll(where: {$0.name == r?.object(forKey: "name") as! String})
-                        StoreStruct.categories.append(c)
-                        print(o.debugDescription)
+                        if r != nil {
+                            print(r?.recordID as Any)
+                            var c = StoreStruct.categories.filter({$0.name == r?.object(forKey: "name") as! String})[0]
+                            c.record = r
+                            StoreStruct.categories.removeAll(where: {$0.name == r?.object(forKey: "name") as! String})
+                            StoreStruct.categories.append(c)
+                            print(o.debugDescription)
+                        }
                     })
                 }
             } else {
