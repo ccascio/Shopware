@@ -24,10 +24,9 @@ class Feed5View: UIViewController, UISearchBarDelegate {
 
 	private var selectedMenu = 0
 
-    private var recents: [String] = StoreStruct.recents
+    private var recents: [String] = ["Amy Roberts", "Betty Hansen", "Chloe Adams", "Doris Royston", "Emma Harris", "Fabia Smith", "Betty Hansen", "Amy Roberts"] // TODO remove stub
     private var filtered:[String] = []
     private var unfiltered:[String] = []
-    private var trendings: [Scanned] = StoreStruct.trendings ?? []
     private var filteredTrend: [Scanned]?
     private var unfilteredTrend: [Scanned]?
 
@@ -110,7 +109,7 @@ class Feed5View: UIViewController, UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         recents = unfiltered
-        trendings = unfilteredTrend!
+        StoreStruct.trendings = unfilteredTrend!
 
         if searchText.count > 0 {
             filtered = recents.filter({ (text) -> Bool in
@@ -120,11 +119,11 @@ class Feed5View: UIViewController, UISearchBarDelegate {
             })
             recents = filtered
 
-            filteredTrend = trendings.filter({$0.artworkUrl600!.lowercased().contains(searchText.lowercased())})
-            trendings = filteredTrend!
+            filteredTrend = StoreStruct.trendings!.filter({$0.artworkUrl600!.lowercased().contains(searchText.lowercased())})
+            StoreStruct.trendings = filteredTrend!
         } else {
             recents = unfiltered
-            trendings = unfilteredTrend!
+            StoreStruct.trendings = unfilteredTrend!
         }
 
         refreshView(e: "photo", indexPath: nil)
@@ -132,7 +131,7 @@ class Feed5View: UIViewController, UISearchBarDelegate {
 
     func filterCat(_ searchBar: UISearchBar, textDidChange searchText: String) {
         recents = unfiltered
-        trendings = unfilteredTrend!
+        StoreStruct.trendings = unfilteredTrend!
 
         if searchText.count > 0 {
             filtered = recents.filter({ (text) -> Bool in
@@ -142,11 +141,11 @@ class Feed5View: UIViewController, UISearchBarDelegate {
             })
             recents = filtered
 
-            filteredTrend = trendings.filter({$0.productName!.lowercased().contains(searchText.lowercased())})
-            trendings = filteredTrend!
+            filteredTrend = StoreStruct.trendings!.filter({$0.productName!.lowercased().contains(searchText.lowercased())})
+            StoreStruct.trendings = filteredTrend!
         } else {
             recents = unfiltered
-            trendings = unfilteredTrend!
+            StoreStruct.trendings = unfilteredTrend!
         }
 
         refreshView(e: "photo", indexPath: nil)
@@ -197,17 +196,17 @@ class Feed5View: UIViewController, UISearchBarDelegate {
             }
 
             if StoreStruct.scanned.count > 0 {
-                trendings.removeAll()
+                StoreStruct.trendings!.removeAll()
                 for b in StoreStruct.scanned {
-                    self.trendings.append(b)
+                    StoreStruct.trendings!.append(b)
                 }
 
-                unfilteredTrend = trendings
+                unfilteredTrend = StoreStruct.trendings
                 self.refreshView(e: "photo", indexPath: nil)
                 completionHandler(true)
             } else {
-                trendings.removeAll()
-                unfilteredTrend = trendings
+                StoreStruct.trendings!.removeAll()
+                unfilteredTrend = StoreStruct.trendings
                 self.refreshView(e: "photo", indexPath: nil)
                 completionHandler(true)
             }
@@ -217,16 +216,16 @@ class Feed5View: UIViewController, UISearchBarDelegate {
         i = top - 30
         while i < top {
             let t: Scanned = Scanned(barcode: "Social", type: "nil", country: "Italy", new: false, asin: "")
-            trendings.append(t)
+            StoreStruct.trendings!.append(t)
             i+=1
         }
  //<-- */
-            unfilteredTrend = trendings
+            unfilteredTrend = StoreStruct.trendings
                         self.refreshView(e: "photo", indexPath: nil)
                         completionHandler(true)
             self.refreshView(e: "menu", indexPath: IndexPath(row: 1, section: 1))
         }
-        unfilteredTrend = trendings
+        unfilteredTrend = StoreStruct.trendings
 	}
 
 	// MARK: - Helper Methods
@@ -272,7 +271,7 @@ extension Feed5View: UICollectionViewDataSource {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if (collectionView == collectionViewMenu) { return StoreStruct.categories.filter({$0.record != nil}).count }
-        if (collectionView == collectionViewPhotos) { return trendings.count }
+        if (collectionView == collectionViewPhotos) { return StoreStruct.trendings!.count }
 		return 0
 	}
 
@@ -339,10 +338,10 @@ extension Feed5View: UICollectionViewDataSource {
             if self.selectedMenu != 0 {
             // Create an action for copy
                 let copy = UIAction(title: "Copy to your list", image: UIImage(systemName: "doc.on.doc")) { [self] action in
-    //                let editView = Comments2View(barcode: self.trendings[indexPath.row].barcode)
+    //                let editView = Comments2View(barcode: StoreStruct.trendings[indexPath.row].barcode)
     //                self.present(editView, animated: true)
                     if self.selectedMenu != 0 {
-                        StoreStruct.scanned.append(self.trendings[indexPath.row])
+                        StoreStruct.scanned.append(StoreStruct.trendings![indexPath.row])
                     }
                 }
                 children?.append(copy)
@@ -350,12 +349,12 @@ extension Feed5View: UICollectionViewDataSource {
             // Create an action for delete with destructive attributes (highligh in red)
             let delete = UIAction(title: "Cancel", image: UIImage(systemName: "trash"), attributes: .destructive) { [self] action in
                 if selectedMenu == 0 {
-                    CloudController().deleteBarcode(barcode: self.trendings[indexPath.row].barcode)
-                    StoreStruct.scanned.removeAll(where: {$0.barcode == self.trendings[indexPath.row].barcode})
+                    CloudController().deleteBarcode(barcode: StoreStruct.trendings![indexPath.row].barcode)
+                    StoreStruct.scanned.removeAll(where: {$0.barcode == StoreStruct.trendings![indexPath.row].barcode})
                 } else {
-                    StoreStruct.product.removeAll(where: {$0.barcode == self.trendings[indexPath.row].barcode})
+                    StoreStruct.product.removeAll(where: {$0.barcode == StoreStruct.trendings![indexPath.row].barcode})
                 }
-                self.trendings.remove(at: indexPath.row)
+                StoreStruct.trendings!.remove(at: indexPath.row)
             }
             children?.append(delete)
             // Create a UIMenu with all the actions as children
@@ -381,9 +380,9 @@ extension Feed5View: UICollectionViewDelegate {
 		}
 		if (collectionView == collectionViewPhotos) {
             DispatchQueue.main.async {
-                StoreStruct.product.removeAll(where: {$0.barcode == self.trendings[indexPath.row].barcode})
-                StoreStruct.product.append(self.trendings[indexPath.row])
-                let post3DTouchView = Post3DTouchView(barcode: self.trendings[indexPath.row].barcode)
+                StoreStruct.product.removeAll(where: {$0.barcode == StoreStruct.trendings![indexPath.row].barcode})
+                StoreStruct.product.append(StoreStruct.trendings![indexPath.row])
+                let post3DTouchView = Post3DTouchView(barcode: StoreStruct.trendings![indexPath.row].barcode)
                 self.present(post3DTouchView, animated: true)
             }
 		}

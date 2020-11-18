@@ -12,17 +12,13 @@ import CloudKit
 struct StoreStruct {
 
     static var profile = Profile(lastname: "", firstname: "")
-    static var recents: [String] = ["Amy Roberts", "Betty Hansen", "Chloe Adams", "Doris Royston", "Emma Harris", "Fabia Smith", "Betty Hansen", "Amy Roberts"]
     static var categories: [Category] = []
     static var trendings: [Scanned]?
-    static var trending: Scanned?
-    static var allResults: [Any] = []
     static var cart: [Scanned] = []
     static var scanned: [Scanned] = []
     static var product: [Scanned] = []
     static var scannedCount = -1
     static var record: CKRecord?
-    static var ean13 = ["01":""]
     static var barcodeCountry =
         ["0":"USA / Canada",
          "1":"USA",

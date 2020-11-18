@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	func applicationWillEnterForeground(_ application: UIApplication) {
         let cc = CloudController()
         cc.query(tableName: "scanned", sortBy: "", filter: "", value: "", isPrivate: true) {s in
-
+//if false notify error
         }
 	}
 

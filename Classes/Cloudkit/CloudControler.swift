@@ -3,7 +3,7 @@
 //  EcObjectives
 //
 //  Created by Calogero Cascio on 25/04/17.
-//  Copyright © 2018 Calogero Cascio. All rights reserved.
+//  Copyright © 202' Calogero Cascio. All rights reserved.
 //
 import Foundation
 import CloudKit
@@ -17,15 +17,13 @@ protocol CloudControllerDelegate {
 
 class CloudController {
     
+    var delegate: CloudControllerDelegate?
     var container: CKContainer
     var publicDB: CKDatabase?
     var privateDB: CKDatabase?
-    var delegate: CloudControllerDelegate?
-    var scanned: [Scanned]?
     var record : CKRecord?
+    var scanned: [Scanned]?
 
-    static var records: [CKRecord]?
-    
     let cf = CommonFunctions()
     
     init() {
@@ -132,6 +130,48 @@ class CloudController {
                 self.privateDB?.delete(withRecordID: record!.recordID) { _,_  in }
             }
         }
+    }
+
+    func saveCategories(publicRepo: Bool) {
+
+        for c in StoreStruct.categories {
+            if c.checked == true {
+                if c.record != nil {
+                    record = c.record
+                } else {
+                    record = CKRecord(recordType: "category")
+                }
+
+                setRecord(column: "name", value: c.name)
+                setRecord(column: "checked", value: "true")
+                record?["sort"] = c.sort
+                if publicRepo {
+                    self.publicDB!.save(record!, completionHandler: { (r, o) -> Void in
+                        print("Saved!")
+                        print(r?.recordID as Any)
+                        print(o.debugDescription)
+                    })
+                } else {
+                    self.privateDB!.save(record!, completionHandler: { (r, o) -> Void in
+                        print("Saved!")
+                        if r != nil {
+                            print(r?.recordID as Any)
+                            var c = StoreStruct.categories.filter({$0.name == r?.object(forKey: "name") as! String})[0]
+                            c.record = r
+                            StoreStruct.categories.removeAll(where: {$0.name == r?.object(forKey: "name") as! String})
+                            StoreStruct.categories.append(c)
+                            print(o.debugDescription)
+                        }
+                    })
+                }
+            } else {
+                if c.record != nil {
+                    self.privateDB!.delete(withRecordID: c.record!.recordID) { _,_ in }
+                }
+            }
+            record = nil
+        }
+
     }
 
     func deleteBarcode(barcode: String) {
@@ -245,48 +285,6 @@ class CloudController {
                 }
             }
         }
-    }
-
-    func saveCategories(publicRepo: Bool) {
-
-        for c in StoreStruct.categories {
-            if c.checked == true {
-                if c.record != nil {
-                    record = c.record
-                } else {
-                    record = CKRecord(recordType: "category")
-                }
-
-                setRecord(column: "name", value: c.name)
-                setRecord(column: "checked", value: "true")
-                record?["sort"] = c.sort
-                if publicRepo {
-                    self.publicDB!.save(record!, completionHandler: { (r, o) -> Void in
-                        print("Saved!")
-                        print(r?.recordID as Any)
-                        print(o.debugDescription)
-                    })
-                } else {
-                    self.privateDB!.save(record!, completionHandler: { (r, o) -> Void in
-                        print("Saved!")
-                        if r != nil {
-                            print(r?.recordID as Any)
-                            var c = StoreStruct.categories.filter({$0.name == r?.object(forKey: "name") as! String})[0]
-                            c.record = r
-                            StoreStruct.categories.removeAll(where: {$0.name == r?.object(forKey: "name") as! String})
-                            StoreStruct.categories.append(c)
-                            print(o.debugDescription)
-                        }
-                    })
-                }
-            } else {
-                if c.record != nil {
-                    self.privateDB!.delete(withRecordID: c.record!.recordID) { _,_ in }
-                }
-            }
-            record = nil
-        }
-
     }
 
     func updateScanned(record: CKRecord, name: String, json: Data?, vote: Int?, country: String?, publicRepo: Bool) {
